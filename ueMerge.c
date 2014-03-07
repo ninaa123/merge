@@ -10,12 +10,36 @@
 
 void mergesort(int * a, int lo, int hi) //int pointer (array), n: anzahl der elemente
 {
-    //überprüfen: if n<2 return
-    //wenn alles ok: do-while schleife
-    //
+    if (hi - lo < 1) {
+        return; // an array of size <= 2 is already sorted
+    }
+    
+    int mid = (lo+hi)/2;
+    mergesort(a, lo, mid);
+    mergesort(a, mid+1, hi);
+    
+    // todo: merge them
+}
+void mergesort(int * a, int n)
+{
+    mergesort(a, 0, n-1)
+}
+
+void printArray(int * a, int n)
+{
+    // todo
 }
 
 int main(int argc, char** argv) {
+    
+    int a[] = { 15, 42, 26, 37, 1 };
+    int n = sizeof(a) / sizeof(a[0]);
+    // at this point sizeof(a) is really the number of bytes the array uses
+    
+    printArray(a, n);
+    mergesort(a, n);
+    printArray(a, n);
+    
 
     return (EXIT_SUCCESS);
 }
